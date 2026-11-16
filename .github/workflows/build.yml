@@ -1,0 +1,96 @@
+name: rebuild map
+run-name: rebuild map
+
+on:
+  repository_dispatch:
+    types: [rebuild]
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+    inputs:
+      include_test:
+        description: "Include issues labelled test (end-to-end checks only)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Check setup
+        id: ready
+        env:
+          APP_ID: ${{ secrets.WISHMAP_APP_ID }}
+          PASS: ${{ secrets.MAP_PASSPHRASE }}
+        run: |
+          if [ -n "$APP_ID" ] && [ -n "$PASS" ]; then
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Setup not finished (App or passphrase secret missing); skipping."
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.ready.outputs.ok == 'true'
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        if: steps.ready.outputs.ok == 'true'
+        with:
+          node-version: 24
+
+      - name: App token (read wishlist + board)
+        id: app
+        if: steps.ready.outputs.ok == 'true'
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.WISHMAP_APP_ID }}
+          private-key: ${{ secrets.WISHMAP_APP_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: wishlist
+
+      - name: Build encrypted map
+        if: steps.ready.outputs.ok == 'true'
+        run: node build/build.js
+        env:
+          WISHMAP_TOKEN: ${{ steps.app.outputs.token }}
+          MAP_PASSPHRASE: ${{ secrets.MAP_PASSPHRASE }}
+          INCLUDE_TEST: ${{ inputs.include_test && '1' || '' }}
+
+      # GitHub disables scheduled workflows in public repos after 60 days without commits.
+      - name: Keepalive
+        if: steps.ready.outputs.ok == 'true'
+        run: |
+          last=$(git log -1 --format=%ct)
+          if [ $(( $(date +%s) - last )) -gt $(( 40 * 86400 )) ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit --allow-empty -m "chore: keepalive"
+            git push
+          fi
+
+      - uses: actions/configure-pages@v5
+        if: steps.ready.outputs.ok == 'true'
+
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.ready.outputs.ok == 'true'
+        with:
+          path: dist
+
+      - name: Deploy
+        id: deploy
+        if: steps.ready.outputs.ok == 'true'
+        uses: actions/deploy-pages@v4
