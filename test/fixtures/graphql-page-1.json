@@ -26,6 +26,7 @@
           "number": 2, "id": "I_2", "title": "ექსპორტი", "body": "b2",
           "state": "CLOSED", "stateReason": "DUPLICATE", "url": "https://github.com/o/r/issues/2", "createdAt": "2026-11-02T10:00:00Z",
           "author": null,
+          "duplicateOf": { "number": 3 },
           "assignees": { "nodes": [] },
           "labels": { "nodes": [{ "name": "wish" }] },
           "reactions": { "nodes": [] },

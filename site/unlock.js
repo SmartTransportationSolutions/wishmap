@@ -34,7 +34,9 @@ export async function initUnlock({ fetchEnvelope, storage, idb, ask }) {
   // 3. Ask until the passphrase is right.
   let error = null;
   for (;;) {
-    const { passphrase, remember } = await ask(error);
+    const answer = await ask(error);
+    const passphrase = String(answer.passphrase ?? "").trim();
+    const remember = answer.remember;
     const key = await attempt(() => deriveKey(passphrase, envelope.salt, envelope.iter, { extractable: true }));
     const data = key && (await attempt(() => decryptWithKey(envelope, key)));
     if (!data) {

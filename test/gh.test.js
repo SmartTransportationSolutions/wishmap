@@ -58,6 +58,15 @@ test("graphql returns data", async () => {
   assert.deepEqual(JSON.parse(f.calls[0].init.body), { query: "query { viewer { login } }", variables: { a: 1 } });
 });
 
+test("graphql allowPartial returns data despite errors and reports the count", async () => {
+  const f = fakeFetch([{ status: 200, body: { data: { x: 1 }, errors: [{ type: "FORBIDDEN" }, { type: "FORBIDDEN" }] } }]);
+  const gh = createGh({ token: "t", fetchImpl: f.impl });
+  let count = 0;
+  const data = await gh.graphql("query { x }", {}, { allowPartial: true, onPartial: (n) => (count = n) });
+  assert.deepEqual(data, { x: 1 });
+  assert.equal(count, 2);
+});
+
 test("graphql errors[] → GhError{status:200} without variables", async () => {
   const f = fakeFetch([{ status: 200, body: { errors: [{ type: "NOT_FOUND", message: "Could not resolve" }] } }]);
   const gh = createGh({ token: "t", fetchImpl: f.impl });

@@ -23,8 +23,10 @@ function listFiles(dir) {
   });
 }
 
-export async function assemble({ mapData, passphrase, outDir = join(ROOT, "dist"), iterations = 600000 }) {
-  if (!passphrase || passphrase.length < MIN_PASSPHRASE) {
+export async function assemble({ mapData, passphrase: rawPassphrase, outDir = join(ROOT, "dist"), iterations = 600000 }) {
+  // Trimmed on both sides (here and in the browser) so a stray newline/space can't lock people out.
+  const passphrase = String(rawPassphrase ?? "").trim();
+  if (passphrase.length < MIN_PASSPHRASE) {
     throw new Error(`passphrase missing or shorter than ${MIN_PASSPHRASE} characters`);
   }
   rmSync(outDir, { recursive: true, force: true });
@@ -38,10 +40,11 @@ export async function assemble({ mapData, passphrase, outDir = join(ROOT, "dist"
 export async function main(env = process.env) {
   if (!env.WISHMAP_TOKEN) throw new Error("WISHMAP_TOKEN missing");
   const gh = createGh({ token: env.WISHMAP_TOKEN });
-  const raw = await collect({ gh, owner: OWNER, repo: WISHLIST_REPO, boardNumber: 1 });
+  let partial = 0;
+  const raw = await collect({ gh, owner: OWNER, repo: WISHLIST_REPO, boardNumber: 1, onPartial: (n) => (partial += n) });
   const mapData = derive(raw, { now: new Date(), includeTest: env.INCLUDE_TEST === "1", newWishUrl: NEW_WISH_URL, repoUrl: REPO_URL });
   await assemble({ mapData, passphrase: env.MAP_PASSPHRASE });
-  console.log(`wishes=${mapData.wishes.length} projects=${mapData.projects.length}`);
+  console.log(`wishes=${mapData.wishes.length} projects=${mapData.projects.length} partial_errors=${partial}`);
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

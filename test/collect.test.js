@@ -64,6 +64,25 @@ test("botComments filtered to BOT_LOGINS", async () => {
   assert.deepEqual(by[1].botComments, [{ author: { login: "github-actions" }, body: "bot says\n<!-- wishmap:related -->", id: 11 }]);
 });
 
+test("maps native duplicateOf", async () => {
+  const { by } = await run();
+  assert.equal(by[2].duplicateOf, 3);
+  assert.equal(by[1].duplicateOf, null);
+});
+
+test("partial GraphQL errors don't abort the build", async () => {
+  const seen = [];
+  const gh = {
+    async graphql(query, variables, opts) {
+      seen.push(opts);
+      return variables.cursor ? page(2) : page(1);
+    },
+  };
+  const out = await collect({ gh, owner: OWNER, repo: "wishlist" });
+  assert.equal(out.length, 3);
+  assert.ok(seen.every((o) => o && o.allowPartial === true));
+});
+
 test("deleted author → null", async () => {
   const { by } = await run();
   assert.equal(by[2].author, null);

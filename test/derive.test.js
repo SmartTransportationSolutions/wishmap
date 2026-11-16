@@ -74,10 +74,18 @@ test("closed duplicate is excluded and listed in canonical's mergedFrom", () => 
   assert.deepEqual(wishes[0].mergedFrom, [2]);
 });
 
-test("closed as duplicate in the GitHub UI (no bot marker) is not drawn", () => {
+test("closed as duplicate with no known target is not drawn", () => {
   const { wishes } = derive([raw(1), raw(2, { state: "closed", stateReason: "duplicate" })], opts);
   assert.deepEqual(wishes.map((w) => w.n), [1]);
   assert.deepEqual(wishes[0].mergedFrom, []);
+});
+
+test("closed as duplicate in the GitHub UI uses the native duplicateOf link and keeps the votes", () => {
+  const ui = raw(2, { state: "closed", stateReason: "duplicate", duplicateOf: 1, thumbsUp: [who("lasha")] });
+  const { wishes } = derive([raw(1), ui], opts);
+  assert.deepEqual(wishes.map((w) => w.n), [1]);
+  assert.deepEqual(wishes[0].mergedFrom, [2]);
+  assert.deepEqual(wishes[0].people, ["u1", "u2", "lasha"]);
 });
 
 test("resolveMerges transitive + cycle-safe", () => {

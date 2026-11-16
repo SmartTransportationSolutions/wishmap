@@ -75,7 +75,8 @@ export function derive(raw, { now = new Date(), includeTest = false, newWishUrl,
   // Merges: only closed-as-duplicate wishes with a bot marker pointing at another wish count.
   const wishNumbers = new Set(wishRaw.map((w) => w.n));
   const mergeInput = wishRaw.map((w) => {
-    const target = isClosedDuplicate(w) ? readBotState(w.botComments).sameAs : null;
+    // Bot marker first; else GitHub's native "duplicate of" link (lead used "Close as duplicate").
+    const target = isClosedDuplicate(w) ? readBotState(w.botComments).sameAs ?? w.duplicateOf ?? null : null;
     return { n: w.n, mergedInto: target != null && wishNumbers.has(target) && target !== w.n ? target : null, open: w.state === "open" };
   });
   const canonicalOf = resolveMerges(mergeInput);

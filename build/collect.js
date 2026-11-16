@@ -9,6 +9,7 @@ export const ISSUES_QUERY = `query($owner: String!, $repo: String!, $cursor: Str
       nodes {
         number id title body state stateReason url createdAt
         author { login avatarUrl }
+        duplicateOf { number }
         assignees(first: 10) { nodes { login avatarUrl } }
         labels(first: 30) { nodes { name } }
         reactions(content: THUMBS_UP, first: 100) { nodes { user { login avatarUrl } } }
@@ -47,6 +48,7 @@ function toRaw(node, owner, boardNumber) {
     url: node.url,
     createdAt: node.createdAt,
     author: person(node.author),
+    duplicateOf: node.duplicateOf ? node.duplicateOf.number : null,
     assignees: nodes(node.assignees).map(person).filter(Boolean),
     labels: nodes(node.labels).map((l) => l.name),
     thumbsUp: nodes(node.reactions).map((r) => person(r.user)).filter(Boolean),
@@ -60,11 +62,11 @@ function toRaw(node, owner, boardNumber) {
   };
 }
 
-export async function collect({ gh, owner, repo, boardNumber = 1 }) {
+export async function collect({ gh, owner, repo, boardNumber = 1, onPartial }) {
   const out = [];
   let cursor = null;
   for (let guard = 0; guard < 200; guard++) {
-    const data = await gh.graphql(ISSUES_QUERY, { owner, repo, cursor });
+    const data = await gh.graphql(ISSUES_QUERY, { owner, repo, cursor }, { allowPartial: true, onPartial });
     const conn = data.repository.issues;
     for (const node of conn.nodes) out.push(toRaw(node, owner, boardNumber));
     if (!conn.pageInfo.hasNextPage) break;

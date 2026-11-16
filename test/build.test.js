@@ -54,6 +54,13 @@ test("rebuilds reuse the site salt so remembered keys keep working", async () =>
   assert.notEqual(ea.iv, eb.iv);
 });
 
+test("passphrase is trimmed so a stray newline or space can't lock everyone out", async () => {
+  const out = mkdtempSync(join(tmpdir(), "wishmap-"));
+  await assemble({ mapData, passphrase: `  ${PASS}\n`, outDir: out, iterations: 1000 });
+  const env = JSON.parse(readFileSync(join(out, "data.enc"), "utf8"));
+  assert.deepEqual(await decryptJson(env, PASS), mapData);
+});
+
 test("refuses a missing or short passphrase", async () => {
   const out = mkdtempSync(join(tmpdir(), "wishmap-"));
   await assert.rejects(assemble({ mapData, passphrase: "", outDir: out, iterations: 1000 }), /passphrase/);

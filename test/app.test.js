@@ -99,6 +99,14 @@ test("stale remembered key (passphrase rotated) is dropped and the user is asked
   assert.equal(idb.m.has("key"), false);
 });
 
+test("typed passphrase is trimmed (pasted trailing space)", async () => {
+  const env = await envelope();
+  const a = asker([{ passphrase: ` ${PASS}  `, remember: false }]);
+  const data = await initUnlock({ fetchEnvelope: async () => env, storage: fakeStorage(), idb: fakeIdb(), ask: a.ask });
+  assert.deepEqual(data, DATA);
+  assert.equal(a.seen.length, 1);
+});
+
 test("storage throwing doesn't break unlock", async () => {
   const env = await envelope();
   const data = await initUnlock({
