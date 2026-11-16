@@ -5,8 +5,8 @@ import { createHash } from "node:crypto";
 import { join, relative } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { createGh } from "../lib/gh.js";
-import { encryptJson } from "../shared/crypto-box.js";
-import { OWNER, WISHLIST_REPO, NEW_WISH_URL, REPO_URL } from "../shared/form-schema.js";
+import { encryptJson } from "../site/shared/crypto-box.js";
+import { OWNER, WISHLIST_REPO, NEW_WISH_URL, REPO_URL } from "../site/shared/form-schema.js";
 import { collect } from "./collect.js";
 import { derive } from "./derive.js";
 
@@ -29,8 +29,7 @@ export async function assemble({ mapData, passphrase, outDir = join(ROOT, "dist"
   }
   rmSync(outDir, { recursive: true, force: true });
   mkdirSync(outDir, { recursive: true });
-  cpSync(join(ROOT, "site"), outDir, { recursive: true });
-  cpSync(join(ROOT, "shared"), join(outDir, "shared"), { recursive: true });
+  cpSync(join(ROOT, "site"), outDir, { recursive: true }); // includes site/shared/
   const envelope = await encryptJson(mapData, passphrase, { iterations, salt: SITE_SALT });
   writeFileSync(join(outDir, "data.enc"), JSON.stringify(envelope));
   return { files: listFiles(outDir).map((f) => relative(outDir, f)) };

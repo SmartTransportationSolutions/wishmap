@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { derive, resolveMerges, deriveStatus, demand } from "../build/derive.js";
 import { marker } from "../lib/markers.js";
-import { FIELDS, AREAS } from "../shared/form-schema.js";
+import { FIELDS, AREAS } from "../site/shared/form-schema.js";
 
 const now = new Date("2026-11-16T12:00:00Z");
 const opts = { now, newWishUrl: "NEW", repoUrl: "REPO" };

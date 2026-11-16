@@ -4,7 +4,7 @@ import { mkdtempSync, readFileSync, readdirSync, statSync, existsSync } from "no
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { assemble } from "../build/build.js";
-import { decryptJson } from "../shared/crypto-box.js";
+import { decryptJson } from "../site/shared/crypto-box.js";
 
 const SECRET_TITLE = "საიდუმლო-სურვილი-XYZ";
 const mapData = { v: 1, generatedAt: "2026-11-16T00:00:00Z", wishes: [{ n: 1, title: SECRET_TITLE }], projects: [], people: { ana: { avatar: "" } } };

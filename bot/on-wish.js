@@ -7,7 +7,7 @@ import { parseWishBody } from "../lib/parse-form.js";
 import { findRelated } from "../lib/match-trigram.js";
 import { readBotState } from "../lib/markers.js";
 import { relatedComment, noRelatedNow } from "../lib/strings-bot.ka.js";
-import { displayTitle } from "../shared/form-schema.js";
+import { displayTitle } from "../site/shared/form-schema.js";
 import { dispatchRebuild } from "./dispatch.js";
 
 export const trigramMatcher = async (wish, candidates, exclude) => findRelated(wish, candidates, { exclude });

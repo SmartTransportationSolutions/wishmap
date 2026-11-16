@@ -1,7 +1,7 @@
 // RawIssue[] → MapData v1 (the contract the site renders). Pure functions, no I/O.
 import { parseWishBody } from "../lib/parse-form.js";
 import { readBotState } from "../lib/markers.js";
-import { displayTitle } from "../shared/form-schema.js";
+import { displayTitle } from "../site/shared/form-schema.js";
 
 const BOARD_TO_STATUS = { "To Do": "planned", "In Progress": "in-progress", "In Review": "in-progress", Done: "done" };
 const has = (issue, label) => issue.labels.includes(label);

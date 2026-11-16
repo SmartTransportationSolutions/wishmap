@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { encryptJson, decryptJson, deriveKey, decryptWithKey, exportRawKey, importRawKey } from "../shared/crypto-box.js";
+import { encryptJson, decryptJson, deriveKey, decryptWithKey, exportRawKey, importRawKey } from "../site/shared/crypto-box.js";
 
 const FAST = { iterations: 1000 };
 const DATA = { v: 1, wishes: [{ n: 1, title: "ყოველკვირეული ანგარიშის ავტომატური გენერირება 📊" }] };

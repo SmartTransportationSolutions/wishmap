@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { handleWish, trigramMatcher, withFallback } from "../bot/on-wish.js";
 import { dispatchRebuild } from "../bot/dispatch.js";
-import { FIELDS, AREAS, TIMES, STARTED } from "../shared/form-schema.js";
+import { FIELDS, AREAS, TIMES, STARTED } from "../site/shared/form-schema.js";
 import { marker } from "../lib/markers.js";
 import { fakeGh, posts, patches } from "./helpers/fake-gh.js";
 

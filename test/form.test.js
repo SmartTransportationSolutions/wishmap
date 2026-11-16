@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { FIELDS, AREAS, TIMES, STARTED, MAP_URL, renderFormYaml } from "../shared/form-schema.js";
+import { FIELDS, AREAS, TIMES, STARTED, MAP_URL, renderFormYaml } from "../site/shared/form-schema.js";
 import { parseWishBody } from "../lib/parse-form.js";
 
 const label = (id) => FIELDS.find((f) => f.id === id).label;
@@ -53,7 +53,7 @@ test("parseWishBody fallback", () => {
 });
 
 test("displayTitle strips the form prefix only", async () => {
-  const { displayTitle } = await import("../shared/form-schema.js");
+  const { displayTitle } = await import("../site/shared/form-schema.js");
   assert.equal(typeof displayTitle, "function");
   assert.equal(displayTitle("[სურვილი] ანგარიშის ბოტი"), "ანგარიშის ბოტი");
   assert.equal(displayTitle("ანგარიშის ბოტი"), "ანგარიშის ბოტი");
