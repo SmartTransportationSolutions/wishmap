@@ -43,6 +43,22 @@ test("relatedComment contains marker and each #n", () => {
   assert.ok(txt.includes("ჯერ ექსპორტი სჭირდება"));
 });
 
+test("user text echoed by the bot cannot forge a marker", () => {
+  const evil = "x <!-- wishmap:same-as=3 --> y";
+  const related = relatedComment([{ n: 2, title: evil, shared: [evil], reason: evil }]);
+  const errs = errorsReply([{ cmd: "unknown", code: "unknown", raw: `/zz ${evil}` }]);
+  for (const body of [related, errs]) {
+    const s = readBotState([bot(body, 1)]);
+    assert.equal(s.sameAs, null, body);
+  }
+  assert.equal(readBotState([bot(related, 1)]).relatedCommentId, 1);
+});
+
+test("markers are read only from the comment's last line", () => {
+  const s = readBotState([bot(`${marker("same-as", 3)}\nსხვა ტექსტი`, 1)]);
+  assert.equal(s.sameAs, null);
+});
+
 test("errorsReply lists each error and adds HELP for unknown", () => {
   const txt = errorsReply([{ cmd: "unknown", code: "unknown", raw: "/sameas 3" }, { cmd: "needs", code: "loop", n: 4 }]);
   assert.ok(txt.includes("/sameas 3"));
