@@ -54,8 +54,19 @@ try {
   await send("Page.navigate", { url });
   await sleep(1200);
   if (pass) {
-    await evaluate(`(() => { const f = document.querySelector("form.unlock"); if (!f) return "no-form"; f.pass.value = ${JSON.stringify(pass)}; f.requestSubmit(); return "submitted"; })()`);
-    await sleep(1500);
+    // Wait for the unlock form (data.enc may load slowly over the network), submit, then wait
+    // until the form is gone (PBKDF2 600k takes a moment) or an error shows.
+    let state = "no-form";
+    for (let i = 0; i < 50 && state === "no-form"; i++) {
+      state = await evaluate(`(() => { const f = document.querySelector("form.unlock"); if (!f) return "no-form"; f.pass.value = ${JSON.stringify(pass)}; f.requestSubmit(); return "submitted"; })()`);
+      if (state === "no-form") await sleep(200);
+    }
+    for (let i = 0; i < 75; i++) {
+      const s = await evaluate(`(() => { const f = document.querySelector("form.unlock"); if (!f) return "unlocked"; const e = f.querySelector(".error"); return e && e.textContent ? "error" : "waiting"; })()`);
+      if (s !== "waiting") { console.log(`unlock: ${s}`); break; }
+      await sleep(200);
+    }
+    await sleep(800);
   }
   if (after) {
     await evaluate(after);
