@@ -26,7 +26,7 @@ export function withFallback(primary, fallback, log = console.log) {
 const names = (labels) => (labels || []).map((l) => (typeof l === "string" ? l : l.name));
 const enc = encodeURIComponent;
 
-async function listAll(gh, path) {
+export async function listAll(gh, path) {
   const out = [];
   for (let page = 1; page <= 20; page++) {
     const sep = path.includes("?") ? "&" : "?";
