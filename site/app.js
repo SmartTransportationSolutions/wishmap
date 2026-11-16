@@ -1,6 +1,7 @@
 // App state + page shell. createState/relativeTime are DOM-free (tested in Node);
 // renderApp builds the page and delegates tabs to view renderers passed in by main.js.
 import { T } from "./strings.ka.js";
+import { emptyFilters } from "./filters.js";
 
 export function createState(mapData) {
   const counts = Object.fromEntries(T.statusOrder.map((s) => [s, 0]));
@@ -10,7 +11,7 @@ export function createState(mapData) {
     noData: !mapData,
     emptyState: !mapData || mapData.wishes.length === 0,
     counts,
-    filters: { q: "", statuses: new Set(), areas: new Set(), project: null, person: null, showWontDo: false },
+    filters: emptyFilters(),
     sort: { key: "demand", dir: "desc" },
     tab: "map",
     selected: null,
