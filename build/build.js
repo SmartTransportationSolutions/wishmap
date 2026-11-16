@@ -11,7 +11,7 @@ import { collect } from "./collect.js";
 import { derive } from "./derive.js";
 
 const ROOT = fileURLToPath(new URL("..", import.meta.url));
-const MIN_PASSPHRASE = 10;
+const MIN_PASSPHRASE = 8; // team chose a 9-char passphrase (2026-11-16); longer is safer — data.enc is public
 // Site-specific, public, stable salt: remembered keys survive rebuilds; changing the passphrase
 // still changes the key. (16 bytes of SHA-256 over a fixed label.)
 const SITE_SALT = createHash("sha256").update(`wishmap:${OWNER}:v1`).digest().subarray(0, 16).toString("base64");

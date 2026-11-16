@@ -61,6 +61,14 @@ test("passphrase is trimmed so a stray newline or space can't lock everyone out"
   assert.deepEqual(await decryptJson(env, PASS), mapData);
 });
 
+test("accepts a 9-character passphrase (minimum is 8)", async () => {
+  const out = mkdtempSync(join(tmpdir(), "wishmap-"));
+  await assemble({ mapData, passphrase: "fake-pw-9", outDir: out, iterations: 1000 });
+  const env = JSON.parse(readFileSync(join(out, "data.enc"), "utf8"));
+  assert.deepEqual(await decryptJson(env, "fake-pw-9"), mapData);
+  await assert.rejects(assemble({ mapData, passphrase: "1234567", outDir: out, iterations: 1000 }), /passphrase/);
+});
+
 test("refuses a missing or short passphrase", async () => {
   const out = mkdtempSync(join(tmpdir(), "wishmap-"));
   await assert.rejects(assemble({ mapData, passphrase: "", outDir: out, iterations: 1000 }), /passphrase/);
