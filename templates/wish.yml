@@ -1,0 +1,64 @@
+name: "სურვილი"
+description: "დაამატე სურვილი: რა გინდა, რომ ავტომატიზდეს ან გაკეთდეს"
+title: "[სურვილი] "
+labels: ["wish"]
+body:
+  - type: markdown
+    attributes:
+      value: "⚠️ ჯერ შეამოწმე რუკა — იქნებ ვინმეს უკვე იგივე სურს: https://smarttransportationsolutions.github.io/wishmap/"
+  - type: textarea
+    id: problem
+    attributes:
+      label: "რა პრობლემაა დღეს? (რას აკეთებ ხელით, რა გაწუხებს)"
+      placeholder: "მაგ.: ყოველ ორშაბათს ხელით ვაერთიანებ 5 Excel ფაილს მოძრაობის აღრიცხვიდან…"
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: "როგორ გამოიყურება „მზადაა“?"
+      placeholder: "მაგ.: ანგარიში თავისით მზადდება და ორშაბათ დილით ფოსტაზე მოდის"
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: "სფერო"
+      options:
+        - "მოძრაობის მონაცემები და აღრიცხვა"
+        - "მოდელირება"
+        - "GIS და რუკები"
+        - "ანგარიშგება და დოკუმენტები"
+        - "ვებ და CMS"
+        - "მონაცემები და ბაზები"
+        - "ადმინისტრაცია და ფინანსები"
+        - "სხვა"
+    validations:
+      required: true
+  - type: dropdown
+    id: time
+    attributes:
+      label: "რამდენ დროს გართმევს?"
+      options:
+        - "< 1 სთ კვირაში"
+        - "1–5 სთ კვირაში"
+        - "5+ სთ კვირაში"
+        - "იშვიათად, მაგრამ მტკივნეულად"
+    validations:
+      required: true
+  - type: input
+    id: tools
+    attributes:
+      label: "ინსტრუმენტები / მონაცემები (Excel, Visum, QGIS…)"
+      placeholder: "მაგ.: Excel, PTV Visum, QGIS, Python"
+    validations:
+      required: false
+  - type: dropdown
+    id: started
+    attributes:
+      label: "უკვე მუშაობ ამაზე?"
+      options:
+        - "არა, მხოლოდ სურვილია"
+        - "კი, დავიწყე — ჩემზეა"
+    validations:
+      required: false
