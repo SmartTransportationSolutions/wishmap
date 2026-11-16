@@ -1,6 +1,7 @@
 // Build the Pages site: collect wishlist issues → derive MapData → encrypt → dist/.
 // Logs ONLY counts. Never print titles, bodies, logins or the passphrase.
 import { cpSync, mkdirSync, writeFileSync, rmSync, readdirSync, statSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { join, relative } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { createGh } from "../lib/gh.js";
@@ -11,6 +12,9 @@ import { derive } from "./derive.js";
 
 const ROOT = fileURLToPath(new URL("..", import.meta.url));
 const MIN_PASSPHRASE = 10;
+// Site-specific, public, stable salt: remembered keys survive rebuilds; changing the passphrase
+// still changes the key. (16 bytes of SHA-256 over a fixed label.)
+const SITE_SALT = createHash("sha256").update(`wishmap:${OWNER}:v1`).digest().subarray(0, 16).toString("base64");
 
 function listFiles(dir) {
   return readdirSync(dir).flatMap((f) => {
@@ -27,7 +31,7 @@ export async function assemble({ mapData, passphrase, outDir = join(ROOT, "dist"
   mkdirSync(outDir, { recursive: true });
   cpSync(join(ROOT, "site"), outDir, { recursive: true });
   cpSync(join(ROOT, "shared"), join(outDir, "shared"), { recursive: true });
-  const envelope = await encryptJson(mapData, passphrase, { iterations });
+  const envelope = await encryptJson(mapData, passphrase, { iterations, salt: SITE_SALT });
   writeFileSync(join(outDir, "data.enc"), JSON.stringify(envelope));
   return { files: listFiles(outDir).map((f) => relative(outDir, f)) };
 }

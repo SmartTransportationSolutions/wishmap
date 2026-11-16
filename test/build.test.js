@@ -43,6 +43,17 @@ test("no plaintext title or login in any dist file", async () => {
   }
 });
 
+test("rebuilds reuse the site salt so remembered keys keep working", async () => {
+  const a = mkdtempSync(join(tmpdir(), "wishmap-"));
+  const b = mkdtempSync(join(tmpdir(), "wishmap-"));
+  await assemble({ mapData, passphrase: PASS, outDir: a, iterations: 1000 });
+  await assemble({ mapData, passphrase: PASS, outDir: b, iterations: 1000 });
+  const ea = JSON.parse(readFileSync(join(a, "data.enc"), "utf8"));
+  const eb = JSON.parse(readFileSync(join(b, "data.enc"), "utf8"));
+  assert.equal(ea.salt, eb.salt);
+  assert.notEqual(ea.iv, eb.iv);
+});
+
 test("refuses a missing or short passphrase", async () => {
   const out = mkdtempSync(join(tmpdir(), "wishmap-"));
   await assert.rejects(assemble({ mapData, passphrase: "", outDir: out, iterations: 1000 }), /passphrase/);

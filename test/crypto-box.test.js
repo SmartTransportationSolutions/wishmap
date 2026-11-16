@@ -64,6 +64,16 @@ test("session mode: extractable key round-trips through raw export", async () =>
   assert.deepEqual(await decryptWithKey(env, again), DATA);
 });
 
+test("a fixed salt keeps a remembered key valid across rebuilds", async () => {
+  const salt = btoa("0123456789abcdef");
+  const first = await encryptJson(DATA, "p", { ...FAST, salt });
+  const key = await deriveKey("p", first.salt, first.iter);
+  const second = await encryptJson({ ...DATA, v: 2 }, "p", { ...FAST, salt });
+  assert.equal(second.salt, salt);
+  assert.notEqual(second.iv, first.iv);
+  assert.deepEqual(await decryptWithKey(second, key), { ...DATA, v: 2 });
+});
+
 test("unknown envelope version rejected", async () => {
   const env = await encryptJson(DATA, "p", FAST);
   await assert.rejects(decryptJson({ ...env, v: 2 }, "p"), /bad-envelope/);

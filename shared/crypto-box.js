@@ -31,8 +31,9 @@ export async function deriveKey(passphrase, saltB64, iterations, { extractable =
   );
 }
 
-export async function encryptJson(obj, passphrase, { iterations = ITERATIONS } = {}) {
-  const salt = toB64(random(16));
+// `salt` (base64) may be fixed per site so a key remembered in the browser stays valid across
+// rebuilds; the IV is always fresh.
+export async function encryptJson(obj, passphrase, { iterations = ITERATIONS, salt = toB64(random(16)) } = {}) {
   const ivBytes = random(12);
   const key = await deriveKey(passphrase, salt, iterations);
   const ct = await subtle.encrypt({ name: "AES-GCM", iv: ivBytes }, key, new TextEncoder().encode(JSON.stringify(obj)));
