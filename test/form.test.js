@@ -52,6 +52,15 @@ test("parseWishBody fallback", () => {
   assert.deepEqual(parseWishBody(null).complete, false);
 });
 
+test("displayTitle strips the form prefix only", async () => {
+  const { displayTitle } = await import("../shared/form-schema.js");
+  assert.equal(typeof displayTitle, "function");
+  assert.equal(displayTitle("[სურვილი] ანგარიშის ბოტი"), "ანგარიშის ბოტი");
+  assert.equal(displayTitle("ანგარიშის ბოტი"), "ანგარიშის ბოტი");
+  assert.equal(displayTitle("[სურვილი] "), "[სურვილი]");
+  assert.equal(displayTitle(null), "");
+});
+
 test("unknown dropdown value → null", () => {
   const out = parseWishBody(bodyOf([["problem", "x"], ["done", "y"], ["area", "რაღაც სხვა"], ["time", "_No response_"]]));
   assert.equal(out.area, null);

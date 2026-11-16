@@ -10,6 +10,13 @@ export const NEW_WISH_URL = `${REPO_URL}/issues/new?template=wish.yml`;
 export const FORM_NAME = "სურვილი";
 export const FORM_DESCRIPTION = "დაამატე სურვილი: რა გინდა, რომ ავტომატიზდეს ან გაკეთდეს";
 export const TITLE_PREFIX = "[სურვილი] ";
+// Issue titles start with the form's prefix; show them without it.
+export function displayTitle(title) {
+  const t = String(title ?? "").trim();
+  const p = TITLE_PREFIX.trim();
+  return t.startsWith(p) ? t.slice(p.length).trim() || t : t;
+}
+
 export const HEADER = (mapUrl) => `⚠️ ჯერ შეამოწმე რუკა — იქნებ ვინმეს უკვე იგივე სურს: ${mapUrl}`;
 
 export const AREAS = [
