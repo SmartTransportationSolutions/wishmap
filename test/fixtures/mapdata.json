@@ -1,0 +1,595 @@
+{
+ "v": 1,
+ "generatedAt": "2026-11-16T16:51:05.136Z",
+ "newWishUrl": "https://github.com/SmartTransportationSolutions/wishlist/issues/new?template=wish.yml",
+ "repoUrl": "https://github.com/SmartTransportationSolutions/wishlist",
+ "wishes": [
+  {
+   "n": 1,
+   "title": "მოძრაობის აღრიცხვის ვიდეოების ავტომატური დამუშავება",
+   "url": "https://github.com/SmartTransportationSolutions/wishlist/issues/1",
+   "problem": "ხელით ვაკეთებთ ყოველ ჯერზე — ბევრ დროს ართმევს გუნდს და შეცდომებიც ხდება.",
+   "done": "ავტომატურად ხდება და შედეგი ერთ ადგილას ჩანს.",
+   "tools": "Python, OpenCV",
+   "area": "traffic",
+   "time": "5h+",
+   "status": "in-progress",
+   "owner": "gio",
+   "people": [
+    "ana",
+    "gio",
+    "nino",
+    "lasha",
+    "tamar"
+   ],
+   "mergedFrom": [],
+   "needs": [],
+   "neededBy": [],
+   "project": 101,
+   "createdAt": "2026-11-10T09:00:00Z"
+  },
+  {
+   "n": 2,
+   "title": "Excel-ის აღრიცხვის ფაილების გაერთიანება ერთ ბაზაში",
+   "url": "https://github.com/SmartTransportationSolutions/wishlist/issues/2",
+   "problem": "ხელით ვაკეთებთ ყოველ ჯერზე — ბევრ დროს ართმევს გუნდს და შეცდომებიც ხდება.",
+   "done": "ავტომატურად ხდება და შედეგი ერთ ადგილას ჩანს.",
+   "tools": "Excel, PostgreSQL",
+   "area": "data",
+   "time": "1-5h",
+   "status": "planned",
+   "owner": null,
+   "people": [
+    "nino",
+    "ana",
+    "eka"
+   ],
+   "mergedFrom": [
+    9
+   ],
+   "needs": [],
+   "neededBy": [
+    3,
+    4,
+    18
+   ],
+   "project": 101,
+   "createdAt": "2026-11-10T09:00:00Z"
+  },
+  {
+   "n": 3,
+   "title": "ყოველკვირეული ანგარიშის ავტომატური გენერირება",
+   "url": "https://github.com/SmartTransportationSolutions/wishlist/issues/3",
+   "problem": "ხელით ვაკეთებთ ყოველ ჯერზე — ბევრ დროს ართმევს გუნდს და შეცდომებიც ხდება.",
+   "done": "ავტომატურად ხდება და შედეგი ერთ ადგილას ჩანს.",
+   "tools": "Word, Excel",
+   "area": "reporting",
+   "time": "1-5h",
+   "status": "idea",
+   "owner": null,
+   "people": [
+    "tamar",
+    "zuka",
+    "mari",
+    "dato"
+   ],
+   "mergedFrom": [],
+   "needs": [
+    2
+   ],
+   "neededBy": [
+    21
+   ],
+   "project": null,
+   "createdAt": "2026-11-10T09:00:00Z"
+  },
+  {
+   "n": 4,
+   "title": "Visum-ის მოდელის შედეგების ექსპორტი GIS-ში",
+   "url": "https://github.com/SmartTransportationSolutions/wishlist/issues/4",
+   "problem": "ხელით ვაკეთებთ ყოველ ჯერზე — ბევრ დროს ართმევს გუნდს და შეცდომებიც ხდება.",
+   "done": "ავტომატურად ხდება და შედეგი ერთ ადგილას ჩანს.",
+   "tools": "PTV Visum, QGIS",
+   "area": "modelling",
+   "time": "1-5h",
+   "status": "idea",
+   "owner": null,
+   "people": [
+    "levan",
+    "ana"
+   ],
+   "mergedFrom": [],
+   "needs": [
+    2
+   ],
+   "neededBy": [
+    12
+   ],
+   "project": null,
+   "createdAt": "2026-11-10T09:00:00Z"
+  },
+  {
+   "n": 5,
+   "title": "QGIS-ის რუკების შაბლონები კლიენტის ანგარიშებისთვის",
+   "url": "https://github.com/SmartTransportationSolutions/wishlist/issues/5",
+   "problem": "ხელით ვაკეთებთ ყოველ ჯერზე — ბევრ დროს ართმევს გუნდს და შეცდომებიც ხდება.",
+   "done": "ავტომატურად ხდება და შედეგი ერთ ადგილას ჩანს.",
+   "tools": "QGIS",
+   "area": "gis",
+   "time": "lt1h",
+   "status": "planned",
+   "owner": null,
+   "people": [
+    "eka",
+    "nino"
+   ],
+   "mergedFrom": [],
+   "needs": [],
+   "neededBy": [
+    6
+   ],
+   "project": 102,
+   "createdAt": "2026-11-10T09:00:00Z"
+  },
+  {
+   "n": 6,
+   "title": "პარკირების მონაცემების ინტერაქტიული რუკა",
+   "url": "https://github.com/SmartTransportationSolutions/wishlist/issues/6",
+   "problem": "ხელით ვაკეთებთ ყოველ ჯერზე — ბევრ დროს ართმევს გუნდს და შეცდომებიც ხდება.",
+   "done": "ავტომატურად ხდება და შედეგი ერთ ადგილას ჩანს.",
+   "tools": "QGIS, Leaflet",
+   "area": "gis",
+   "time": "rare",
+   "status": "idea",
+   "owner": null,
+   "people": [
+    "zuka",
+    "lasha",
+    "gio"
+   ],
+   "mergedFrom": [],
+   "needs": [
+    5
+   ],
+   "neededBy": [],
+   "project": 102,
+   "createdAt": "2026-11-10T09:00:00Z"
+  },
+  {
+   "n": 7,
+   "title": "ვებგვერდზე პროექტების ავტომატური განახლება",
+   "url": "https://github.com/SmartTransportationSolutions/wishlist/issues/7",
+   "problem": "ხელით ვაკეთებთ ყოველ ჯერზე — ბევრ დროს ართმევს გუნდს და შეცდომებიც ხდება.",
+   "done": "ავტომატურად ხდება და შედეგი ერთ ადგილას ჩანს.",
+   "tools": "CMS",
+   "area": "web",
+   "time": "lt1h",
+   "status": "done",
+   "owner": "mari",
+   "people": [
+    "mari"
+   ],
+   "mergedFrom": [],
+   "needs": [],
+   "neededBy": [],
+   "project": null,
+   "createdAt": "2026-11-10T09:00:00Z"
+  },
+  {
+   "n": 8,
+   "title": "ინვოისების შედგენა დროის აღრიცხვიდან",
+   "url": "https://github.com/SmartTransportationSolutions/wishlist/issues/8",
+   "problem": "ხელით ვაკეთებთ ყოველ ჯერზე — ბევრ დროს ართმევს გუნდს და შეცდომებიც ხდება.",
+   "done": "ავტომატურად ხდება და შედეგი ერთ ადგილას ჩანს.",
+   "tools": "Excel",
+   "area": "admin",
+   "time": "5h+",
+   "status": "idea",
+   "owner": null,
+   "people": [
+    "dato",
+    "eka",
+    "zuka",
+    "tamar",
+    "nino",
+    "ana"
+   ],
+   "mergedFrom": [],
+   "needs": [],
+   "neededBy": [
+    17
+   ],
+   "project": null,
+   "createdAt": "2026-11-10T09:00:00Z"
+  },
+  {
+   "n": 10,
+   "title": "მიკრომოდელირების სცენარების ავტომატური გაშვება",
+   "url": "https://github.com/SmartTransportationSolutions/wishlist/issues/10",
+   "problem": "ხელით ვაკეთებთ ყოველ ჯერზე — ბევრ დროს ართმევს გუნდს და შეცდომებიც ხდება.",
+   "done": "ავტომატურად ხდება და შედეგი ერთ ადგილას ჩანს.",
+   "tools": "PTV Vissim, Python",
+   "area": "modelling",
+   "time": "5h+",
+   "status": "in-progress",
+   "owner": "levan",
+   "people": [
+    "levan",
+    "gio"
+   ],
+   "mergedFrom": [],
+   "needs": [],
+   "neededBy": [
+    11
+   ],
+   "project": 103,
+   "createdAt": "2026-11-10T09:00:00Z"
+  },
+  {
+   "n": 11,
+   "title": "სცენარების შედარების დაფა",
+   "url": "https://github.com/SmartTransportationSolutions/wishlist/issues/11",
+   "problem": "ხელით ვაკეთებთ ყოველ ჯერზე — ბევრ დროს ართმევს გუნდს და შეცდომებიც ხდება.",
+   "done": "ავტომატურად ხდება და შედეგი ერთ ადგილას ჩანს.",
+   "tools": "",
+   "area": "modelling",
+   "time": "1-5h",
+   "status": "idea",
+   "owner": null,
+   "people": [
+    "levan",
+    "tamar",
+    "zuka"
+   ],
+   "mergedFrom": [],
+   "needs": [
+    10
+   ],
+   "neededBy": [],
+   "project": 103,
+   "createdAt": "2026-11-10T09:00:00Z"
+  },
+  {
+   "n": 12,
+   "title": "სატრანსპორტო ნაკადების ვიზუალიზაცია ვებზე",
+   "url": "https://github.com/SmartTransportationSolutions/wishlist/issues/12",
+   "problem": "ხელით ვაკეთებთ ყოველ ჯერზე — ბევრ დროს ართმევს გუნდს და შეცდომებიც ხდება.",
+   "done": "ავტომატურად ხდება და შედეგი ერთ ადგილას ჩანს.",
+   "tools": "D3",
+   "area": "web",
+   "time": "rare",
+   "status": "idea",
+   "owner": null,
+   "people": [
+    "gio"
+   ],
+   "mergedFrom": [],
+   "needs": [
+    4
+   ],
+   "neededBy": [],
+   "project": null,
+   "createdAt": "2026-11-10T09:00:00Z"
+  },
+  {
+   "n": 13,
+   "title": "GPS-ტრეკების გასუფთავება და იმპორტი",
+   "url": "https://github.com/SmartTransportationSolutions/wishlist/issues/13",
+   "problem": "ხელით ვაკეთებთ ყოველ ჯერზე — ბევრ დროს ართმევს გუნდს და შეცდომებიც ხდება.",
+   "done": "ავტომატურად ხდება და შედეგი ერთ ადგილას ჩანს.",
+   "tools": "Python",
+   "area": "traffic",
+   "time": "1-5h",
+   "status": "planned",
+   "owner": "ana",
+   "people": [
+    "ana",
+    "lasha"
+   ],
+   "mergedFrom": [],
+   "needs": [],
+   "neededBy": [],
+   "project": 101,
+   "createdAt": "2026-11-10T09:00:00Z"
+  },
+  {
+   "n": 14,
+   "title": "საველე ფორმები ტაბლეტზე აღრიცხვისთვის",
+   "url": "https://github.com/SmartTransportationSolutions/wishlist/issues/14",
+   "problem": "ხელით ვაკეთებთ ყოველ ჯერზე — ბევრ დროს ართმევს გუნდს და შეცდომებიც ხდება.",
+   "done": "ავტომატურად ხდება და შედეგი ერთ ადგილას ჩანს.",
+   "tools": "",
+   "area": "traffic",
+   "time": "1-5h",
+   "status": "idea",
+   "owner": null,
+   "people": [
+    "lasha",
+    "nino",
+    "gio"
+   ],
+   "mergedFrom": [],
+   "needs": [],
+   "neededBy": [],
+   "project": null,
+   "createdAt": "2026-11-10T09:00:00Z"
+  },
+  {
+   "n": 15,
+   "title": "კლიენტის პრეზენტაციების შაბლონი",
+   "url": "https://github.com/SmartTransportationSolutions/wishlist/issues/15",
+   "problem": "ხელით ვაკეთებთ ყოველ ჯერზე — ბევრ დროს ართმევს გუნდს და შეცდომებიც ხდება.",
+   "done": "ავტომატურად ხდება და შედეგი ერთ ადგილას ჩანს.",
+   "tools": "PowerPoint",
+   "area": "reporting",
+   "time": "lt1h",
+   "status": "wont-do",
+   "owner": null,
+   "people": [
+    "mari"
+   ],
+   "mergedFrom": [],
+   "needs": [],
+   "neededBy": [],
+   "project": null,
+   "createdAt": "2026-11-10T09:00:00Z"
+  },
+  {
+   "n": 16,
+   "title": "დოკუმენტების ვერსიების კონტროლი",
+   "url": "https://github.com/SmartTransportationSolutions/wishlist/issues/16",
+   "problem": "ხელით ვაკეთებთ ყოველ ჯერზე — ბევრ დროს ართმევს გუნდს და შეცდომებიც ხდება.",
+   "done": "ავტომატურად ხდება და შედეგი ერთ ადგილას ჩანს.",
+   "tools": "",
+   "area": "admin",
+   "time": "lt1h",
+   "status": "idea",
+   "owner": null,
+   "people": [
+    "eka"
+   ],
+   "mergedFrom": [],
+   "needs": [],
+   "neededBy": [],
+   "project": null,
+   "createdAt": "2026-11-10T09:00:00Z"
+  },
+  {
+   "n": 17,
+   "title": "პროექტის ბიუჯეტის ტრეკერი",
+   "url": "https://github.com/SmartTransportationSolutions/wishlist/issues/17",
+   "problem": "ხელით ვაკეთებთ ყოველ ჯერზე — ბევრ დროს ართმევს გუნდს და შეცდომებიც ხდება.",
+   "done": "ავტომატურად ხდება და შედეგი ერთ ადგილას ჩანს.",
+   "tools": "Excel",
+   "area": "admin",
+   "time": "1-5h",
+   "status": "idea",
+   "owner": null,
+   "people": [
+    "dato",
+    "zuka"
+   ],
+   "mergedFrom": [],
+   "needs": [
+    8
+   ],
+   "neededBy": [],
+   "project": null,
+   "createdAt": "2026-11-10T09:00:00Z"
+  },
+  {
+   "n": 18,
+   "title": "მოძრაობის მონაცემების API კლიენტებისთვის",
+   "url": "https://github.com/SmartTransportationSolutions/wishlist/issues/18",
+   "problem": "ხელით ვაკეთებთ ყოველ ჯერზე — ბევრ დროს ართმევს გუნდს და შეცდომებიც ხდება.",
+   "done": "ავტომატურად ხდება და შედეგი ერთ ადგილას ჩანს.",
+   "tools": "",
+   "area": "data",
+   "time": "rare",
+   "status": "idea",
+   "owner": null,
+   "people": [
+    "gio",
+    "zuka"
+   ],
+   "mergedFrom": [],
+   "needs": [
+    2
+   ],
+   "neededBy": [],
+   "project": null,
+   "createdAt": "2026-11-10T09:00:00Z"
+  },
+  {
+   "n": 19,
+   "title": "ავტომატური შეხსენებები ვადებზე",
+   "url": "https://github.com/SmartTransportationSolutions/wishlist/issues/19",
+   "problem": "ხელით ვაკეთებთ ყოველ ჯერზე — ბევრ დროს ართმევს გუნდს და შეცდომებიც ხდება.",
+   "done": "ავტომატურად ხდება და შედეგი ერთ ადგილას ჩანს.",
+   "tools": "Google Calendar",
+   "area": "admin",
+   "time": "lt1h",
+   "status": "done",
+   "owner": "tamar",
+   "people": [
+    "tamar",
+    "mari"
+   ],
+   "mergedFrom": [],
+   "needs": [],
+   "neededBy": [],
+   "project": null,
+   "createdAt": "2026-11-10T09:00:00Z"
+  },
+  {
+   "n": 20,
+   "title": "ფოტოების გეოტეგირება საველე სამუშაოებიდან",
+   "url": "https://github.com/SmartTransportationSolutions/wishlist/issues/20",
+   "problem": "ხელით ვაკეთებთ ყოველ ჯერზე — ბევრ დროს ართმევს გუნდს და შეცდომებიც ხდება.",
+   "done": "ავტომატურად ხდება და შედეგი ერთ ადგილას ჩანს.",
+   "tools": "",
+   "area": "gis",
+   "time": "lt1h",
+   "status": "idea",
+   "owner": null,
+   "people": [
+    "nino"
+   ],
+   "mergedFrom": [],
+   "needs": [],
+   "neededBy": [],
+   "project": null,
+   "createdAt": "2026-11-10T09:00:00Z"
+  },
+  {
+   "n": 21,
+   "title": "ანგარიშების თარგმნა ინგლისურად",
+   "url": "https://github.com/SmartTransportationSolutions/wishlist/issues/21",
+   "problem": "ხელით ვაკეთებთ ყოველ ჯერზე — ბევრ დროს ართმევს გუნდს და შეცდომებიც ხდება.",
+   "done": "ავტომატურად ხდება და შედეგი ერთ ადგილას ჩანს.",
+   "tools": "",
+   "area": "reporting",
+   "time": "1-5h",
+   "status": "idea",
+   "owner": null,
+   "people": [
+    "mari",
+    "tamar",
+    "eka"
+   ],
+   "mergedFrom": [],
+   "needs": [
+    3
+   ],
+   "neededBy": [],
+   "project": null,
+   "createdAt": "2026-11-10T09:00:00Z"
+  },
+  {
+   "n": 22,
+   "title": "მოდელის კალიბრაციის შემოწმების სკრიპტი",
+   "url": "https://github.com/SmartTransportationSolutions/wishlist/issues/22",
+   "problem": "ხელით ვაკეთებთ ყოველ ჯერზე — ბევრ დროს ართმევს გუნდს და შეცდომებიც ხდება.",
+   "done": "ავტომატურად ხდება და შედეგი ერთ ადგილას ჩანს.",
+   "tools": "Python",
+   "area": "modelling",
+   "time": "1-5h",
+   "status": "planned",
+   "owner": null,
+   "people": [
+    "levan"
+   ],
+   "mergedFrom": [],
+   "needs": [],
+   "neededBy": [],
+   "project": 103,
+   "createdAt": "2026-11-10T09:00:00Z"
+  },
+  {
+   "n": 23,
+   "title": "საზოგადოებრივი ტრანსპორტის განრიგების (GTFS) იმპორტი",
+   "url": "https://github.com/SmartTransportationSolutions/wishlist/issues/23",
+   "problem": "ხელით ვაკეთებთ ყოველ ჯერზე — ბევრ დროს ართმევს გუნდს და შეცდომებიც ხდება.",
+   "done": "ავტომატურად ხდება და შედეგი ერთ ადგილას ჩანს.",
+   "tools": "GTFS",
+   "area": "data",
+   "time": "1-5h",
+   "status": "idea",
+   "owner": null,
+   "people": [
+    "gio",
+    "levan",
+    "ana"
+   ],
+   "mergedFrom": [],
+   "needs": [],
+   "neededBy": [],
+   "project": null,
+   "createdAt": "2026-11-10T09:00:00Z"
+  },
+  {
+   "n": 24,
+   "title": "ავარიების მონაცემების ანალიზი",
+   "url": "https://github.com/SmartTransportationSolutions/wishlist/issues/24",
+   "problem": "ხელით ვაკეთებთ ყოველ ჯერზე — ბევრ დროს ართმევს გუნდს და შეცდომებიც ხდება.",
+   "done": "ავტომატურად ხდება და შედეგი ერთ ადგილას ჩანს.",
+   "tools": "",
+   "area": "traffic",
+   "time": "rare",
+   "status": "idea",
+   "owner": null,
+   "people": [
+    "lasha"
+   ],
+   "mergedFrom": [],
+   "needs": [],
+   "neededBy": [],
+   "project": null,
+   "createdAt": "2026-11-10T09:00:00Z"
+  }
+ ],
+ "projects": [
+  {
+   "n": 101,
+   "title": "მოძრაობის მონაცემების ჰაბი",
+   "url": "https://github.com/SmartTransportationSolutions/wishlist/issues/101",
+   "status": "in-progress",
+   "tasks": {
+    "done": 3,
+    "total": 7
+   }
+  },
+  {
+   "n": 102,
+   "title": "GIS რუკების ნაკრები",
+   "url": "https://github.com/SmartTransportationSolutions/wishlist/issues/102",
+   "status": "planned",
+   "tasks": {
+    "done": 0,
+    "total": 4
+   }
+  },
+  {
+   "n": 103,
+   "title": "მოდელირების ავტომატიზაცია",
+   "url": "https://github.com/SmartTransportationSolutions/wishlist/issues/103",
+   "status": "in-progress",
+   "tasks": {
+    "done": 2,
+    "total": 5
+   }
+  }
+ ],
+ "people": {
+  "ana": {
+   "avatar": ""
+  },
+  "gio": {
+   "avatar": ""
+  },
+  "nino": {
+   "avatar": ""
+  },
+  "lasha": {
+   "avatar": ""
+  },
+  "tamar": {
+   "avatar": ""
+  },
+  "eka": {
+   "avatar": ""
+  },
+  "zuka": {
+   "avatar": ""
+  },
+  "mari": {
+   "avatar": ""
+  },
+  "dato": {
+   "avatar": ""
+  },
+  "levan": {
+   "avatar": ""
+  }
+ }
+}
