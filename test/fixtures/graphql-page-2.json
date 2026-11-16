@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "issues": {
+      "pageInfo": { "hasNextPage": false, "endCursor": "c2" },
+      "nodes": [
+        {
+          "number": 3, "id": "I_3", "title": "მონაცემების ჰაბი", "body": "b3",
+          "state": "OPEN", "stateReason": null, "url": "https://github.com/o/r/issues/3", "createdAt": "2026-11-03T10:00:00Z",
+          "author": { "login": "zuka", "avatarUrl": "https://a/zuka" },
+          "assignees": { "nodes": [] },
+          "labels": { "nodes": [{ "name": "project" }] },
+          "reactions": { "nodes": [] },
+          "parent": null,
+          "subIssues": { "nodes": [{ "number": 1 }] },
+          "blockedBy": { "nodes": [] },
+          "comments": { "nodes": [] },
+          "projectItems": { "nodes": [
+            { "project": { "number": 1, "owner": { "login": "SmartTransportationSolutions" } }, "fieldValueByName": null }
+          ] }
+        }
+      ]
+    }
+  }
+}
